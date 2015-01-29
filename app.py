@@ -2,13 +2,14 @@
 Flask Documentation:     http://flask.pocoo.org/docs/
 Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
-
 This file creates your application.
 """
 
 import os
 from flask import Flask, render_template, request, redirect, url_for
 
+
+index = "heroku.com"
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
@@ -18,16 +19,24 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configur
 # Routing for your application.
 ###
 
+# @app.route('/index')
+#def index():
+  #  """Render website's home page."""
+   # return render_template('base.html')
+  
+  
 @app.route('/')
-def home():
+def index():
     """Render website's home page."""
-    return render_template('home.html')
+    return render_template('base.html')
 
 
 @app.route('/about/')
 def about():
     """Render the website's about page."""
     return render_template('about.html')
+  
+
 
 
 ###
